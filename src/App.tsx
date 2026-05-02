@@ -1,4 +1,3 @@
-import React from 'react';
 import Sidebar from './components/Sidebar';
 import Canvas from './components/Canvas';
 import PropertiesPanel from './components/PropertiesPanel';

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { Download, FileImage, FileText, ZoomIn, ZoomOut, Maximize, Type, Upload, X } from 'lucide-react';
+import { FileImage, FileText, ZoomIn, ZoomOut, Maximize, Type, Upload, X } from 'lucide-react';
 import { useReactFlow } from 'reactflow';
-import { toPng, toBlob } from 'html-to-image';
+import { toPng } from 'html-to-image';
 import { jsPDF } from 'jspdf';
 
 const Toolbar = () => {
@@ -25,62 +25,6 @@ const Toolbar = () => {
   const removeLogo = () => {
     setLogoUrl(null);
     if (fileInputRef.current) fileInputRef.current.value = '';
-  };
-
-  const getBrandingElement = () => {
-    const branding = document.createElement('div');
-    branding.className = 'export-branding';
-    branding.style.padding = '20px';
-    branding.style.background = '#0f172a';
-    branding.style.color = 'white';
-    branding.style.display = 'flex';
-    branding.style.flexDirection = 'column';
-    branding.style.gap = '10px';
-    branding.style.fontFamily = 'Inter, sans-serif';
-
-    const header = document.createElement('div');
-    header.style.display = 'flex';
-    header.style.justifyContent = 'space-between';
-    header.style.alignItems = 'center';
-
-    const titleInfo = document.createElement('div');
-    const title = document.createElement('h1');
-    title.innerText = processTitle;
-    title.style.margin = '0';
-    title.style.fontSize = '24px';
-    title.style.fontWeight = 'bold';
-    titleInfo.appendChild(title);
-
-    const date = document.createElement('p');
-    date.innerText = `Created: ${new Date().toLocaleDateString()}`;
-    date.style.margin = '0';
-    date.style.opacity = '0.7';
-    date.style.fontSize = '12px';
-    titleInfo.appendChild(date);
-
-    header.appendChild(titleInfo);
-
-    if (logoUrl) {
-      const logo = document.createElement('img');
-      logo.src = logoUrl;
-      logo.style.height = '40px';
-      logo.style.maxWidth = '150px';
-      logo.style.objectFit = 'contain';
-      header.appendChild(logo);
-    }
-
-    branding.appendChild(header);
-
-    const footer = document.createElement('div');
-    footer.style.marginTop = '10px';
-    footer.style.borderTop = '1px solid rgba(255,255,255,0.1)';
-    footer.style.paddingTop = '10px';
-    footer.style.fontSize = '10px';
-    footer.style.opacity = '0.5';
-    footer.innerText = "Created by Saurabh's Process Builder";
-    branding.appendChild(footer);
-
-    return branding;
   };
 
   const exportAsPng = async () => {

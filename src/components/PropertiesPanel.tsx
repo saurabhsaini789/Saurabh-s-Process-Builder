@@ -1,4 +1,3 @@
-import React from 'react';
 import useStore from '../store/useStore';
 import { Trash2, Settings2 } from 'lucide-react';
 
